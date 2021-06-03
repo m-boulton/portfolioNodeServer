@@ -3,10 +3,9 @@ require("dotenv").config({ path: `/var/www/env/.env` });
 require("dotenv").config();
 console.log(`*   Using ${process.env.NODE_ENV} Environment Variables   *`);
 const {
-  PRIMARY_DB_CONNECT: portfolioDatabase,
-  CORS: corsProduction,
+  PRIMARY_PORT: port,
+  CORS_PRIMARY: corsProduction,
   CORS_DEV: corsDev,
-  PORT: port,
   POST_CRED: postPassword,
 } = process.env;
 const corsAddress = process.env.DEV ? corsDev : corsProduction;
@@ -14,10 +13,6 @@ const corsAddress = process.env.DEV ? corsDev : corsProduction;
 // Dependancies
 const express = require("express");
 const app = express();
-
-// Connect to database -------------------------------------------------------------------------------
-
-// const { AmdMongoose } = require("./database/mongodbAmd");
 
 // Middleware ---------------------------------------------------------------------------------------
 //
@@ -30,6 +25,7 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Headers", "Content-Type");
   next();
 });
+
 // Checks the request body for the password so that you can post to the database
 app.use((req, res, next) => {
   req.body.auth = false;
@@ -46,13 +42,13 @@ const portfolioContactRoutes = require("./scripts/routes/portfolioContactRoutes"
 
 // Routes --------------------------------------------------------------------------------------------
 
+// portfolio
+app.use("/portfolio/contact", portfolioContactRoutes);
+
 // root
 app.get("/", (req, res) => {
   res.json({ message: `this is the root api` });
 });
-
-// portfolio
-app.use("/portfolio/contact", portfolioContactRoutes);
 
 // Port Listeners -----------------------------------------------------------------------------------
 //
