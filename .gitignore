@@ -1,5 +1,4 @@
 node_modules
+untracked
 .env
-todos.txt
-trashbin.js
 .vscode

@@ -38,7 +38,7 @@ app.use((req, res, next) => {
 // Import Routes
 
 // Contact Form endpoint
-const portfolioContactRoutes = require("./scripts/routes/portfolioContactRoutes");
+const portfolioContactRoutes = require("./assets/routes/portfolioContactRoutes");
 
 // Routes --------------------------------------------------------------------------------------------
 

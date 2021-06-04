@@ -4,7 +4,8 @@
   "description": "Backend server that will serve api calls for the mboulton portfolio.",
   "main": "portfolioApp.js",
   "scripts": {
-    "start": "node portfolioApp.js"
+    "start": "node portfolioApp.js",
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +20,7 @@
     "nodemailer": "^6.6.1"
   },
   "devDependencies": {
+    "jest": "^27.0.4",
     "parcel-bundler": "^1.12.5"
   }
 }
