@@ -7,9 +7,9 @@ const reqString = {
 };
 
 // Main schema design
-const ContactModel = new Schema(
+const contactSchema = new Schema(
   { name: reqString, email: reqString, subject: String, message: String },
   { timestamps: true }
 );
 // exporting schemas to the model method
-module.exports = ContactModel;
+module.exports = contactSchema;

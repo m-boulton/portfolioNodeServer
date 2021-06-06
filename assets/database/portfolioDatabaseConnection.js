@@ -34,8 +34,4 @@ process.on("SIGINT", async () => {
 
 module.exports = {
   portfolioDatabaseConnection,
-  //   amdContentModel,
-  //   amdNavModel,
-  //   amdSpecItemModel,
-  //   amdSpecListModel,
 };

@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
-const { Schema } = mongoose;
 const {
-  portfolioDatabaseConnection: db,
-} = require("./../database/portfolioDatabase");
+  portfolioDatabaseConnection,
+} = require("../database/portfolioDatabaseConnection");
+const contactSchema = require("./../schemas/contactSchema");
 
 // Attaching the model with imported schema to db connection
-const contactFormModel = db.model(
+const contactFormsModel = portfolioDatabaseConnection.model(
   "ContactForms",
-  require("./../schemas/contactSchema")
+  contactSchema
 );
 
 // Exporting model for use in routing
-module.exports = contactFormModel;
+module.exports = contactFormsModel;

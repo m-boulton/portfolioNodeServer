@@ -43,7 +43,7 @@ const portfolioContactRoutes = require("./assets/routes/portfolioContactRoutes")
 // Routes --------------------------------------------------------------------------------------------
 
 // portfolio
-app.use("/contact", portfolioContactRoutes);
+app.use("/portfolio/contact", portfolioContactRoutes);
 
 // root
 app.get("/", (req, res) => {
