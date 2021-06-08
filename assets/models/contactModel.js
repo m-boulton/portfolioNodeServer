@@ -1,7 +1,4 @@
-const mongoose = require("mongoose");
-const {
-  portfolioDatabaseConnection,
-} = require("../database/portfolioDatabaseConnection");
+const portfolioDatabaseConnection = require("../database/portfolioDatabaseConnection");
 const contactSchema = require("./../schemas/contactSchema");
 
 // Attaching the model with imported schema to db connection

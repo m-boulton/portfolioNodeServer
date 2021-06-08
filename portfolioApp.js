@@ -56,8 +56,6 @@ app.listen(port, (err) => {
   if (err) {
     return console.log("ERROR ", err);
   }
-  console.log(`=> Portfolio server is listening on HTTP port ${port} `);
-  console.log(
-    `=>> Portfolio server is accepting requests from ${corsAddress} Cors Address`
-  );
+  console.log(`=> Portfolio server is listening on local port ${port} `);
+  console.log(`=>> Accepting requests from ${corsAddress} Cors Address`);
 });

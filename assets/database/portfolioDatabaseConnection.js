@@ -16,22 +16,17 @@ const portfolioDatabaseConnection = mongoose.createConnection(
 
 // Logging out database connections--------------------------------------
 portfolioDatabaseConnection.on("connected", () => {
-  console.log("+ Connected to Database +");
+  console.log("+ Connected to Portfolio Database +");
 });
-
 portfolioDatabaseConnection.on("disconnected", () => {
-  console.log("- Disconnected from Database -");
+  console.log("- Disconnected from Portfolio Database -");
 });
-
 portfolioDatabaseConnection.on("error", (error) => {
   console.log(error.message);
 });
-
 process.on("SIGINT", async () => {
   await portfolioDatabaseConnection.close();
   process.exit(0);
 });
 
-module.exports = {
-  portfolioDatabaseConnection,
-};
+module.exports = portfolioDatabaseConnection;
