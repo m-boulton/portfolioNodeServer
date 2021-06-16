@@ -39,11 +39,13 @@ app.use((req, res, next) => {
 
 // Contact Form endpoint
 const portfolioContactRoutes = require("./assets/routes/portfolioContactRoutes");
+const portfolioCodeFilesRoutes = require("./assets/routes/portfolioCodeFilesRoutes");
 
 // Routes --------------------------------------------------------------------------------------------
 
 // portfolio
 app.use("/portfolio/contact", portfolioContactRoutes);
+app.use("/portfolio/codeFiles", portfolioCodeFilesRoutes);
 
 // root
 app.get("/", (req, res) => {
