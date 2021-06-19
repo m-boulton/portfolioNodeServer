@@ -3,8 +3,8 @@ require("dotenv").config({ path: `/var/www/env/.env` });
 require("dotenv").config();
 console.log(`*   Using ${process.env.NODE_ENV} Environment Variables   *`);
 const {
-  PRIMARY_PORT: port,
-  CORS_PRIMARY: corsProduction,
+  PORTFOLIO_PORT: port,
+  CORS_PORTFOLIO: corsProduction,
   CORS_DEV: corsDev,
   POST_CRED: postPassword,
 } = process.env;

@@ -5,8 +5,8 @@ const { readdir } = require("fs").promises;
 const {
   AMD_FRONT: amdFrontend,
   AMD_BACK: amdBackend,
-  PRIMARY_FRONT: portfolioFrontend,
-  PRIMARY_BACK: portfolioBackend,
+  PORTFOLIO_FRONT: portfolioFrontend,
+  PORTFOLIO_BACK: portfolioBackend,
   TEST_DIR: test,
 } = process.env;
 

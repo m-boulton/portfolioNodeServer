@@ -2,7 +2,7 @@
 require("dotenv").config({ path: `/var/www/env/.env` });
 require("dotenv").config();
 const mongoose = require("mongoose");
-const { PRIMARY_DB_CONNECT: portfolioDatabase } = process.env;
+const { PORTFOLIO_DB_CONNECT: portfolioDatabase } = process.env;
 
 // Connect to the AMD database--------------------------------------------
 const portfolioDatabaseConnection = mongoose.createConnection(
