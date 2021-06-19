@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const auth = require("./../auth");
-const getFolderList = require("./../fileManagement/getFolderList");
-const getFileData = require("./../fileManagement/getFileData");
+const auth = require("../auth");
+const getFolderList = require("../fileManagement/getFolderList");
+const getFileData = require("../fileManagement/getFileData");
 
 // Routing for Portfolio Code Files from my work---------------------
 

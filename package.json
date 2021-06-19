@@ -2,9 +2,9 @@
   "name": "portfolionodeserver",
   "version": "1.0.0",
   "description": "Backend server that will serve api calls for the mboulton portfolio.",
-  "main": "portfolioApp.js",
+  "main": "src/portfolioApp.js",
   "scripts": {
-    "start": "nodemon portfolioApp.js",
+    "start": "nodemon src/portfolioApp.js",
     "test": "jest --coverage"
   },
   "author": "",
