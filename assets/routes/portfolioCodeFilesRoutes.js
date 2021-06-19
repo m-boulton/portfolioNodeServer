@@ -1,54 +1,41 @@
 const express = require("express");
 const router = express.Router();
-const fs = require("fs");
 const auth = require("./../auth");
 const getFolderList = require("./../fileManagement/getFolderList");
 const getFileData = require("./../fileManagement/getFileData");
-const errorReporter = require("./../errors/errorsMain");
 
 // Routing for Portfolio Code Files from my work---------------------
 
 router
   .route("/")
   .get(async (req, res) => {
-    //   respond if "type" query is not declared
-    if (req.query.type === null || req.query.project === null) {
-      // #TODO error loggin implementation
-      // const errorResponse = await errorReporter('queryCheck', [req.query.type, req.query.project])
-
-      // return res.json(errorResponse);
-
-      //
-      res.json({
-        message: "Error",
-        error: `the 'type' or 'project' query is empty -- type = ${req.query.type}, -- project = ${req.query.project}`,
-      });
-      return console.log(
-        `file reader endpoint triggered without declaring a file type -- type = ${req.query.type}, -- project = ${req.query.project}`
-      );
-    }
     try {
-      const getFolderListResponse = await getFolderList(
-        req.query.type,
-        req.query.project
-      );
-      // FIXME
-      console.log("test", getFolderListResponse);
-      if (getFolderListResponse == null) {
-        return res.json({
-          message: "Error",
-          error: `there are no ${req.query.type} files in the ${req.query.project} project`,
-        });
+      if (!req.query.project) {
+        throw `file reader endpoint triggered without declaring a project parameter --> project = ${req.query.project}`;
       }
 
-      const getFileDataResponse = await getFileData(getFolderListResponse);
+      // Get the file paths and names
+      const getFolderListResponse = await getFolderList(req.query.project);
+      if (!getFolderListResponse)
+        throw `there are no files in the ${req.query.project} project`;
+      if (getFolderListResponse.message === "ERROR")
+        throw getFolderListResponse.error;
 
-      res.json({ message: "Data", data: getFileDataResponse });
-    } catch (error) {
-      console.log(
-        `There was an error with file reading ${req.query.type} in ${req.query.project}`,
-        error
-      );
+      // Send file locations and get the file data back
+      const getFileDataResponse = await getFileData(getFolderListResponse);
+      if (!getFileDataResponse)
+        throw `there are no files in the ${req.query.project} project`;
+      if (getFileDataResponse.message === "ERROR")
+        throw getFileDataResponse.error;
+
+      // returning the data back to the requester
+      res.json({ message: "DATA", data: getFileDataResponse });
+    } catch (err) {
+      res.json({
+        message: "ERROR",
+        error: `There was an error with file reading --> error: ${err}`,
+      });
+      console.log(`Error Thrown : ${err}`);
     }
   })
   .post(auth, async (req, res) => {
