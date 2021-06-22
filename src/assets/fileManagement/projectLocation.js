@@ -12,7 +12,7 @@ function projectLocation(location) {
   if (location === "amdFrontend") return amdFrontend;
   if (location === "amdBackend") return amdBackend;
   if (location === "portfolioFrontend") return portfolioFrontend;
-  if (location === "portfooioBackend") return portfolioBackend;
+  if (location === "portfolioBackend") return portfolioBackend;
   if (location === "test") return test;
   throw `project location doesnt exist : ${location}`;
 }
