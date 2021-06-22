@@ -11,7 +11,7 @@ async function getIgnoreList(location) {
         encoding: "utf-8",
       })
         .toString()
-        .split("\n");
+        .split("\r\n");
       return ignoredFilesArray;
     }
   } catch (error) {
