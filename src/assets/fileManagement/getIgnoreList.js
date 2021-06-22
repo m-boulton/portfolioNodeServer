@@ -11,6 +11,7 @@ async function getIgnoreList(location) {
         encoding: "utf-8",
       })
         .toString()
+        // FIXME split must use \r on windows client but \n on linux server
         .split("\n");
       return ignoredFilesArray;
     }
