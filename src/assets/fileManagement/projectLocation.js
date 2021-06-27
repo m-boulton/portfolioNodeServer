@@ -8,7 +8,9 @@ const {
   TEST_DIR: test,
 } = process.env;
 
-function projectLocation(location) {
+function projectLocation(location, all) {
+  if (all)
+    return [amdFrontend, amdBackend, portfolioFrontend, portfolioBackend];
   if (location === "amdFrontend") return amdFrontend;
   if (location === "amdBackend") return amdBackend;
   if (location === "portfolioFrontend") return portfolioFrontend;

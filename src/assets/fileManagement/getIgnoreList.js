@@ -1,6 +1,9 @@
 const { resolve } = require("path");
 const { readdir } = require("fs").promises;
 const { readFileSync } = require("fs");
+const { DEV } = process.env;
+
+const envSplit = DEV ? "\r" : "\n";
 
 async function getIgnoreList(location) {
   try {
@@ -11,8 +14,7 @@ async function getIgnoreList(location) {
         encoding: "utf-8",
       })
         .toString()
-        // FIXME  split must use \r on windows client but \n on linux server
-        .split("\n");
+        .split(envSplit);
       return ignoredFilesArray;
     }
   } catch (error) {

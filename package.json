@@ -1,7 +1,8 @@
 {
-  "name": "portfolionodeserver",
+  "name": "portfolio_node_server",
   "version": "1.0.0",
-  "description": "Backend server that will serve api calls for the mboulton portfolio.",
+  "description": "Backend server that will serve api calls for the Mboulton.com portfolio.",
+  "homepage": "https://mboulton.com/portfolio",
   "main": "src/portfolioApp.js",
   "scripts": {
     "start": "nodemon src/portfolioApp.js",
@@ -11,7 +12,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "ssh://git@mboulton.com:/srv/git/portfolioNodeServer.git"
+    "url": "https://github.com/m-boulton/portfolioNodeServer.git"
   },
   "dependencies": {
     "dotenv": "^10.0.0",
