@@ -12,6 +12,12 @@ router
   .route("/")
   .get(async (req, res) => {
     try {
+      if (req.query.test) {
+        // const something = await updateProjectList()
+        const locations = await projectLocation(test);
+        const fileData = await getSpecificFiles(locations);
+        res.json({ message: "filepaths", data: locations });
+      }
       if (req.query.update) {
         // const something = await updateProjectList()
         const locations = await projectLocation(null, true);
