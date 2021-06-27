@@ -22,7 +22,7 @@ router
         // const something = await updateProjectList()
         const locations = await projectLocation(null, true);
         const fileData = await getSpecificFiles(locations);
-        return res.json({ message: "filepaths", data: locations });
+        return res.json({ message: "filepaths", data: fileData });
       }
       res.json("update query not declared");
 
