@@ -14,6 +14,8 @@ async function getSpecificFiles(locations) {
         const packagePath = resolve(location, "package.json");
         const readmePath = resolve(location, "README.md");
         return responseArray.push({ package: packagePath, readme: readmePath });
+      } else {
+        return responseArray.push(directoryContents);
       }
       throw `failed getting location files : ${itemPath}`;
     });
