@@ -14,15 +14,15 @@ router
     try {
       if (req.query.test) {
         // const something = await updateProjectList()
-        const locations = await projectLocation(test);
+        const locations = await projectLocation("test");
         const fileData = await getSpecificFiles(locations);
-        res.json({ message: "filepaths", data: locations });
+        return res.json({ message: "filepaths", data: fileData });
       }
       if (req.query.update) {
         // const something = await updateProjectList()
         const locations = await projectLocation(null, true);
         const fileData = await getSpecificFiles(locations);
-        res.json({ message: "filepaths", data: locations });
+        return res.json({ message: "filepaths", data: locations });
       }
       res.json("update query not declared");
 
