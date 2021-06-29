@@ -1,4 +1,4 @@
-const ProjectListModel = require("../../models/ProjectListModel");
+const ProjectListModel = require("./../../models/projectListModel");
 
 async function projectListPost(data, update) {
   try {
