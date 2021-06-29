@@ -12,6 +12,7 @@ async function projectListPost(data, update) {
       readme: data.readme,
     };
     if (update) {
+      console.log("updating the projects to the database", Date());
       let dbResponse = await ProjectListModel.updateOne(
         { homepage: data.homepage },
         post
@@ -20,6 +21,7 @@ async function projectListPost(data, update) {
       return dbResponse;
     }
     const postSave = new ProjectListModel(post);
+    console.log("updating the projects to the database", Date());
     const dbResponse = await postSave.save();
     console.log(`Successfully saved to the database : ${data.name}`);
     return dbResponse;
