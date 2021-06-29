@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const auth = require("../auth");
-const ProjectListModel = require("../models/ProjectListModel");
+const auth = require("./../auth");
+const ProjectListModel = require("./../models/ProjectListModel");
 const projectLocation = require("./../fileManagement/projectLocation");
-const getProjectInformation = require("../fileManagement/getProjectInformation");
+const getProjectInformation = require("./../fileManagement/getProjectInformation");
 const projectListPostBuilder = require("./../database/dbProcessors/projectListPostBuilder");
 
 // Routing for Portfolio projects list from my the database---------------------root/portfolio/projectList

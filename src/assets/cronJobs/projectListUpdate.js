@@ -1,5 +1,5 @@
 const projectLocation = require("./../fileManagement/projectLocation");
-const getProjectInformation = require("../fileManagement/getProjectInformation");
+const getProjectInformation = require("./../fileManagement/getProjectInformation");
 const projectListPostBuilder = require("./../database/dbProcessors/projectListPostBuilder");
 
 async function projectsUpdate() {
