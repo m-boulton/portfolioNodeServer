@@ -7,7 +7,7 @@ const reqString = {
 };
 
 // Main schema design
-const ProjectListSchema = new Schema(
+const projectListSchema = new Schema(
   {
     // parsed from package.json
     name: reqString,
@@ -20,4 +20,4 @@ const ProjectListSchema = new Schema(
   { timestamps: true }
 );
 // exporting schemas to the model method
-module.exports = ProjectListSchema;
+module.exports = projectListSchema;

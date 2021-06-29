@@ -1,10 +1,10 @@
 const portfolioDatabaseConnection = require("./../database/portfolioDatabaseConnection");
-const ProjectListSchema = require("./../schemas/ProjectListSchema");
+const projectListSchema = require("./../schemas/projectListSchema");
 
 // Attaching the model with imported schema to db connection
 const ProjectListModel = portfolioDatabaseConnection.model(
   "projectList",
-  ProjectListSchema
+  projectListSchema
 );
 
 // Exporting model for use in routing
