@@ -14,6 +14,9 @@ const corsAddress = process.env.DEV ? corsDev : corsProduction;
 const express = require("express");
 const app = express();
 
+// Imports
+const daily = require("./assets/cronJobs/daily");
+
 // Middleware ---------------------------------------------------------------------------------------
 //
 app.use(express.static("public"));
@@ -63,3 +66,7 @@ app.listen(port, (err) => {
   console.log(`=> Portfolio server is listening on local port ${port} `);
   console.log(`=>> Accepting requests from ${corsAddress} Cors Address`);
 });
+
+// Cron Jobs
+//
+daily.start();

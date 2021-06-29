@@ -1,6 +1,6 @@
-const contactFormsModel = require("./../models/contactModel");
+const contactFormsModel = require("./../../models/contactModel");
 
-async function postDatabase(data) {
+async function contactFormsPost(data) {
   const post = new contactFormsModel({
     name: data.name,
     email: data.email,
@@ -14,4 +14,4 @@ async function postDatabase(data) {
     return console.log(`There was an error saving to the database : ${error}`);
   }
 }
-module.exports = postDatabase;
+module.exports = contactFormsPost;

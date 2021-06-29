@@ -7,22 +7,17 @@ const reqString = {
 };
 
 // Main schema design
-const projectListSchema = new Schema(
+const ProjectListSchema = new Schema(
   {
-    order: Number,
     // parsed from package.json
     name: reqString,
-    dependancies: Array,
+    dependencies: [String],
     homepage: String,
     github: reqString,
     // parsed from the readme.md
-    concept: reqString,
-    conceptItems: Array,
-    description: String,
-    languages: Array,
-    notables: Array,
+    readme: reqString,
   },
   { timestamps: true }
 );
 // exporting schemas to the model method
-module.exports = projectListSchema;
+module.exports = ProjectListSchema;

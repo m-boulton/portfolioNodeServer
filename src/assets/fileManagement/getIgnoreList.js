@@ -3,7 +3,7 @@ const { readdir } = require("fs").promises;
 const { readFileSync } = require("fs");
 const { DEV } = process.env;
 
-const envSplit = DEV ? "\r" : "\n";
+const envSplit = DEV ? "\r\n" : "\n";
 
 async function getIgnoreList(location) {
   try {

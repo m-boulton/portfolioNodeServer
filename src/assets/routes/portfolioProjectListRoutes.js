@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const auth = require("../auth");
-const projectListModel = require("./../models/projectListModel");
-const updateProjectList = require("./../fileManagement/updateProjectList");
+const ProjectListModel = require("../models/ProjectListModel");
 const projectLocation = require("./../fileManagement/projectLocation");
-const getSpecificFiles = require("./../fileManagement/getSpecificFiles");
+const getProjectInformation = require("../fileManagement/getProjectInformation");
+const projectListPostBuilder = require("./../database/dbProcessors/projectListPostBuilder");
 
 // Routing for Portfolio projects list from my the database---------------------root/portfolio/projectList
 
@@ -12,25 +12,9 @@ router
   .route("/")
   .get(async (req, res) => {
     try {
-      if (req.query.test) {
-        // const something = await updateProjectList()
-        const locations = await projectLocation("test");
-        const fileData = await getSpecificFiles(locations);
-        return res.json({ message: "filepaths", data: fileData });
-      }
-      if (req.query.update) {
-        // const something = await updateProjectList()
-        const locations = await projectLocation(null, true);
-        const fileData = await getSpecificFiles(locations);
-        if (req.query.paths)
-          return res.json({ message: "filepaths", data: locations });
-        return res.json({ message: "filepaths", data: fileData });
-      }
-      res.json("update query not declared");
-
-      // const projectData = await projectListModel.find();
-      // // returning the data back to the requester
-      // res.json({ message: "PROJECTLIST", data: projectData });
+      const projectData = await ProjectListModel.find();
+      // returning the data back to the requester
+      res.json({ message: "PROJECTLIST", data: projectData });
     } catch (err) {
       console.log(`Error Thrown : ${err}`);
       res.json({
@@ -40,16 +24,32 @@ router
     }
   })
   .post(auth, async (req, res) => {
-    // //   await sendEmail(req.body);
-    // //   await postDatabase(req.body);
-    // // responds back to the client that form has been submitted correctly
-    // res.json({ message: "Success", data: "Form has been submitted." });
+    try {
+      const parentFolder = await projectLocation("parent");
+      const projectData = await getProjectInformation(parentFolder);
+      const saved = await projectListPostBuilder(projectData, false);
+      return res.json({ message: "POSTED", data: saved });
+    } catch (err) {
+      console.log(`Error Thrown : ${err}`);
+      res.json({
+        message: "ERROR",
+        error: `There was an error posting project list from database --> error: ${err}`,
+      });
+    }
   })
   .put(auth, async (req, res) => {
-    // //   await sendEmail(req.body);
-    // //   await postDatabase(req.body);
-    // // responds back to the client that form has been submitted correctly
-    // res.json({ message: "Success", data: "Form has been submitted." });
+    try {
+      const parentFolder = await projectLocation("parent");
+      const projectData = await getProjectInformation(parentFolder);
+      const saved = await projectListPostBuilder(projectData, true);
+      return res.json({ message: "UPDATED", data: saved });
+    } catch (err) {
+      console.log(`Error Thrown : ${err}`);
+      res.json({
+        message: "ERROR",
+        error: `There was an error updating project list from database --> error: ${err}`,
+      });
+    }
   });
 
 module.exports = router;

@@ -5,16 +5,16 @@ const {
   AMD_BACK: amdBackend,
   PORTFOLIO_FRONT: portfolioFrontend,
   PORTFOLIO_BACK: portfolioBackend,
+  PARENT: parent,
   TEST_DIR: test,
 } = process.env;
 
-function projectLocation(location, all) {
-  if (all)
-    return [amdFrontend, amdBackend, portfolioFrontend, portfolioBackend];
+function projectLocation(location) {
   if (location === "amdFrontend") return amdFrontend;
   if (location === "amdBackend") return amdBackend;
   if (location === "portfolioFrontend") return portfolioFrontend;
   if (location === "portfolioBackend") return portfolioBackend;
+  if (location === "parent") return parent;
   if (location === "test") return test;
   throw `project location doesnt exist : ${location}`;
 }
