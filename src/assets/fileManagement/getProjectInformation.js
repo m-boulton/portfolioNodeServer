@@ -1,23 +1,18 @@
 const { resolve } = require("path");
 const { readdir, readFile } = require("fs").promises;
 
-// async function fileReader(path){
-//   fs.readFile("", function(err, data) {
-//     if (err) throw err;
-//     const users = JSON.parse(data);
-//        JSON.parse(fs.readFile(resolve(childFolder, "package.json"))
-// });
-// }
-
 async function getProjectInformation(parentFolder) {
   try {
     const validFolderArray = [];
-    const folders = await readdir(parentFolder);
-    const folderPaths = await folders.map((dirent) => {
-      return resolve(parentFolder, dirent);
-    });
+    const folders = await readdir(parentFolder, { withFileTypes: true });
+    const folderPaths = await folders
+      .map((dirent) => {
+        const resolvedPath = resolve(parentFolder, dirent.name);
+        return dirent.isDirectory() ? resolvedPath : null;
+      })
+      .filter((x) => x);
     for (const childFolder of folderPaths) {
-      const folderContents = await readdir(resolve(parentFolder, childFolder));
+      const folderContents = await readdir(resolve(childFolder));
       if (
         folderContents.includes("package.json") &&
         folderContents.includes("README.md")
@@ -34,6 +29,7 @@ async function getProjectInformation(parentFolder) {
     }
     return validFolderArray;
   } catch (error) {
+    console.log(error);
     return error;
   }
 }
