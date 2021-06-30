@@ -5,6 +5,7 @@ async function projectListPost(data, update) {
     const post = {
       // parsed from package.json
       name: data.name,
+      keywords: data.keywords,
       dependencies: data.dependencies,
       homepage: data.homepage,
       github: data.github,

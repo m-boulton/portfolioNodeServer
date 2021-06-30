@@ -12,6 +12,7 @@ const projectListSchema = new Schema(
     // parsed from package.json
     name: reqString,
     dependencies: [String],
+    keywords: [String],
     homepage: String,
     github: reqString,
     // parsed from the readme.md

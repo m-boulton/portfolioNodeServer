@@ -2,6 +2,15 @@
   "name": "portfolio_api_node_server",
   "version": "1.0.0",
   "description": "Backend server that will serve api calls for the Mboulton.com portfolio.",
+  "keywords": [
+    "3",
+    "nodejs",
+    "expressjs",
+    "mongoose",
+    "nodemailer",
+    "dotenv",
+    "jest"
+  ],
   "homepage": "https://api.mboulton.com/portfolio",
   "main": "src/portfolioApp.js",
   "scripts": {

@@ -10,12 +10,13 @@ async function projectListPostBuilder(projectList, update) {
       let projectObject = {};
       // parsing data from package.json
       projectObject.name = project.package.name;
-      projectObject.homepage = project.package.homepage;
-      projectObject.github = project.package.repository.url;
+      projectObject.keywords = project.package.keywords;
       projectObject.dependencies = [
         ...Object.keys(project.package.dependencies),
         ...Object.keys(project.package.devDependencies),
       ];
+      projectObject.homepage = project.package.homepage;
+      projectObject.github = project.package.repository.url;
       // parsing data from readme.md
       projectObject.readme = project.readme;
 
