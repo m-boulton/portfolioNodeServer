@@ -15,7 +15,7 @@ async function getIgnoreList(location) {
       })
         .toString()
         .split(envSplit);
-      return ignoredFilesArray;
+      return ignoredFilesArray.filter((x) => x != "");
     }
   } catch (error) {
     return error;
