@@ -9,7 +9,7 @@ const {
   POST_CRED: postPassword,
 } = process.env;
 const corsAddress = process.env.DEV ? corsDev : corsProduction;
-
+console.log(corsAddress);
 // Dependancies
 const express = require("express");
 const app = express();

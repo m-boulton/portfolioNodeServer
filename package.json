@@ -8,8 +8,8 @@
     "expressjs",
     "mongoose",
     "nodemailer",
-    "dotenv",
-    "jest"
+    "cronjob",
+    "dotenv"
   ],
   "homepage": "https://api.mboulton.com/portfolio",
   "main": "src/portfolioApp.js",
