@@ -14,7 +14,8 @@
   "homepage": "https://api.mboulton.com/portfolio",
   "main": "src/portfolioApp.js",
   "scripts": {
-    "start": "nodemon src/portfolioApp.js",
+    "start": "node src/portfolioApp.js",
+    "nodemon": "nodemon src/portfolioApp.js",
     "test": "jest --coverage"
   },
   "author": "",
