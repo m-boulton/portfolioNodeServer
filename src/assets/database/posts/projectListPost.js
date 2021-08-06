@@ -12,17 +12,20 @@ async function projectListPost(data, update) {
       // parsed from the readme.md
       readme: data.readme,
     };
+    // runs only on cronjobs and put requests
     if (update) {
       console.log("updating the projects to the database", Date());
-      let dbResponse = await ProjectListModel.updateOne(
+      let dbResponse = await ProjectListModel.update(
         { homepage: data.homepage },
-        post
+        post,
+        { upsert: true }
       );
       console.log(`Successfully updated the database : ${data.name}`);
       return dbResponse;
     }
+    // runs only when a post request is made (postman updating)
     const postSave = new ProjectListModel(post);
-    console.log("updating the projects to the database", Date());
+    console.log("Forcing a project update to the database", Date());
     const dbResponse = await postSave.save();
     console.log(`Successfully saved to the database : ${data.name}`);
     return dbResponse;
