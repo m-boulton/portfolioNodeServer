@@ -9,7 +9,7 @@ const portfolioDatabaseConnection = mongoose.createConnection(
   portfolioDatabase,
   {
     useNewUrlParser: true,
-    useCreateIndex: true,
+    // useCreateIndex: true,
     useUnifiedTopology: true,
   }
 );

@@ -5,7 +5,6 @@ const folderCrawler = require("./folderCrawler");
 async function getFolderList(project) {
   // if (typeof project === 'string')
   let folderPath = await projectLocation(project);
-  console.log(folderPath);
   try {
     const ignore = await getIgnoreList(folderPath);
     return await folderCrawler(folderPath, ignore);
