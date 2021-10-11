@@ -9,6 +9,7 @@ const portfolioDatabaseConnection = mongoose.createConnection(
   portfolioDatabase,
   {
     useNewUrlParser: true,
+    // deprecated for mongoose 6.0
     // useCreateIndex: true,
     useUnifiedTopology: true,
   }

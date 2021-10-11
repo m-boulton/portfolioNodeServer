@@ -15,7 +15,7 @@ async function projectListPost(data, update) {
     // runs only on cronjobs and put requests
     if (update) {
       console.log("updating the projects to the database", Date());
-      let dbResponse = await ProjectListModel.update(
+      let dbResponse = await ProjectListModel.updateOne(
         { homepage: data.homepage },
         post,
         { upsert: true }
