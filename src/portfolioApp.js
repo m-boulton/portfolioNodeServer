@@ -22,8 +22,10 @@ const daily = require("./assets/cronJobs/daily");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ limit: "1mb" }));
-app.use((res) => {
-  console.log(res.header);
+app.use((req, res, next) => {
+  console.log("req header before", req);
+
+  console.log("req header before", req);
   next();
 });
 app.use((req, res, next) => {
