@@ -22,6 +22,10 @@ const daily = require("./assets/cronJobs/daily");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ limit: "1mb" }));
+app.use((res) => {
+  console.log(res.header);
+  next();
+});
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", corsAddress);
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
