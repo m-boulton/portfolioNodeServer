@@ -5,7 +5,9 @@ const {
   AMD_BACK: amdBackend,
   PORTFOLIO_FRONT: portfolioFrontend,
   PORTFOLIO_BACK: portfolioBackend,
+  // this gets the parent directory for all projects
   PARENT: parent,
+  // this is for testing on localhost
   TEST_DIR: test,
 } = process.env;
 
